@@ -11,12 +11,12 @@ def index():
 def reply():
     msg = request.form.get('Body')
     # if(msg.lower() == "hello"):
-    if(msg == "julio"):
-    	reply = "Se la comeeee" 
-    elif(msg == "Julio"):
-    	reply = "Porrooon"
+    if(msg == "Hola"):
+    	reply = "Hi, this is an automated reply." 
+    elif(msg == "APM"):
+    	reply = "Best of bests"
     else:
-        reply = "No se que putas responder"
+        reply = "Command not found."
     response = MessagingResponse()
     response.message(reply)
 
