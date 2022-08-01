@@ -10,10 +10,13 @@ def index():
 @app.route("/sms", methods=['POST'])
 def reply():
     msg = request.form.get('Body')
-    if(msg.lower() == "hello"):
-    	reply = "Hello! How can i help you?" 
+    # if(msg.lower() == "hello"):
+    if(msg == "julio"):
+    	reply = "Se la comeeee" 
+    elif(msg == "Julio"):
+    	reply = "Porrooon"
     else:
-    	reply = msg
+        reply = "No se que putas responder"
     response = MessagingResponse()
     response.message(reply)
 
