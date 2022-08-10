@@ -23,7 +23,7 @@ def reply():
     if(digested_value == request.headers): #not yet finished...
     	if(msg == 'Hola'):
             reply = "Hi, this is an automated reply." 
-        elif(digested_value == "APM"):
+        elif(msg == "APM"):
             reply = "Best of bests"
         else:
             reply = "Command not found."
