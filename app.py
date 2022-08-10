@@ -1,3 +1,5 @@
+import hashlib
+import hmac
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -9,14 +11,22 @@ def index():
 
 @app.route("/sms", methods=['POST'])
 def reply():
+
+    secret = 'qn7VoYDD6imwdFjjRmK0SexbRsgjpGoOgoboYHOjVqQ='
+    encoded_secret = str.encode(secret)
     msg = request.form.get('Body')
+
+    body = 'HMAC ' + hmac.new(encoded_secret, msg.encode('UTF-8'), hashlib.sha256)
+    digested_value = body.digest()
+
     # if(msg.lower() == "hello"):
-    if(msg == "Hola"):
-    	reply = "Hi, this is an automated reply." 
-    elif(msg == "APM"):
-    	reply = "Best of bests"
-    else:
-        reply = "Command not found."
+    if(digested_value == request.headers): #not yet finished...
+    	if(msg == 'Hola'):
+            reply = "Hi, this is an automated reply." 
+        elif(digested_value == "APM"):
+            reply = "Best of bests"
+        else:
+            reply = "Command not found."
     response = MessagingResponse()
     response.message(reply)
 
