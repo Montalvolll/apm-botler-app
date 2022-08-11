@@ -23,13 +23,10 @@ def reply():
     if(hashed == request.headers.get('authorization')): #not yet finished...
     	if(msg == 'Hola'):
             reply = "Hi, this is an automated reply." 
-        elif(msg == "APM"):
-            reply = "Best of bests"
         else:
             reply = "Command not found."
     response = MessagingResponse()
     response.message(reply)
-
     return str(response)
 
 if __name__ == "__main__":
