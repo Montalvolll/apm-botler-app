@@ -22,7 +22,9 @@ def reply():
 
     hashed = 'HMAC ' + hmac.new(encoded_secret, msg.encode('UTF-8'),
                                 hashlib.sha256).digest()
-
+    print(hashed)
+    print(msg)
+    print(request.headers.get('authorization'))
     # digested_value = body.digest()
 
     # if(msg.lower() == "hello"):
