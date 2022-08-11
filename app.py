@@ -20,7 +20,7 @@ def reply():
     digested_value = body.digest()
 
     # if(msg.lower() == "hello"):
-    if(digested_value == request.headers): #not yet finished...
+    if(digested_value == request.headers.get('Authorization')): #not yet finished...
     	if(msg == 'Hola'):
             reply = "Hi, this is an automated reply." 
         elif(msg == "APM"):
