@@ -16,11 +16,11 @@ def reply():
     encoded_secret = str.encode(secret)
     msg = request.form.get('Body')
 
-    body = 'HMAC ' + hmac.new(encoded_secret, msg.encode('UTF-8'), hashlib.sha256)
-    digested_value = body.digest()
+    hashed = 'HMAC ' + hmac.new(encoded_secret, msg.encode('UTF-8'), hashlib.sha256).digest()
+    # digested_value = body.digest()
 
     # if(msg.lower() == "hello"):
-    if(digested_value == request.headers.get('Authorization')): #not yet finished...
+    if(hashed == request.headers.get('authorization')): #not yet finished...
     	if(msg == 'Hola'):
             reply = "Hi, this is an automated reply." 
         elif(msg == "APM"):
